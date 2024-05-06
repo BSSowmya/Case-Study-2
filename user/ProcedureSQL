@@ -1,0 +1,39 @@
+CREATE OR REPLACE FUNCTION public.get_route_wise_bus_details(
+    inputrouteid integer
+) RETURNS TABLE (
+    busid BIGINT,
+    regnumber VARCHAR,
+    starttime TIME,
+    endtime TIME
+) LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+    RETURN QUERY
+    SELECT
+        b.bus_id,
+        b.reg_no,
+        bs.start_time,
+        bs.end_time
+    FROM
+        buses b
+    LEFT JOIN
+        bus_schedules bs ON b.bus_id = bs.bus_id
+    WHERE
+        b.route_id = get_route_wise_bus_details.inputrouteid;
+END;
+$BODY$;
+
+
+INSERT INTO routes (route_name,pickup_point,drop_point)VALUES('Route-1','BANGALORE','HASSAN');
+ INSERT INTO routes (route_name,pickup_point,drop_point)VALUES('Route-2','BANGALORE','MADEKERI');
+ INSERT INTO routes (route_name,pickup_point,drop_point)VALUES('Route-3','BANGALORE','CHIKKAMAGLURU');
+ INSERT INTO routes (route_name,pickup_point,drop_point)VALUES('Route-4','BANGALORE','BIDAR');
+ INSERT INTO routes (route_name,pickup_point,drop_point)VALUES('Route-6','BANGALORE','TUMKUR');
+ INSERT INTO routes (route_name,pickup_point,drop_point)VALUES('Route-7','BANGALORE','CHITRADURGA');
+ INSERT INTO routes (route_name,pickup_point,drop_point)VALUES('Route-8','BANGALORE','DAVENGERE');
+ INSERT INTO routes (route_name,pickup_point,drop_point)VALUES('Route-9','BANGALORE','CHENNAI');
+ INSERT INTO routes (route_name,pickup_point,drop_point)VALUES('Route-10','BANGALORE','TIRICHY');
+
+
+
+
