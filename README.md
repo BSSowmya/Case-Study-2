@@ -5,7 +5,7 @@ This guide provides step-by-step instructions to set up and run the Employee Man
 ## Prerequisites
 - Git
 - Java Development Kit (JDK)
-- MySQL Server
+- Postgres SQL Server
 
 ## Setup Instructions
 
@@ -23,7 +23,7 @@ This guide provides step-by-step instructions to set up and run the Employee Man
 
     ```
 
-3. **Set Up PostgreSQL Databases**: 
+3. **Set Up Postgres SQL Databases**: 
     - Create databases named "case_study" in your Postgres server.
 
 4. **Start the DiscoveryHub**: 
